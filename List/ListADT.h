@@ -16,7 +16,7 @@ template <class T> class List {
     bool appendElement(const T value); // 在表尾添加一个元素 value，表的长度增 1
     bool insertElement(const int p, const T value); // 在位置 p 上插入一个元素 value，表的长度增 1
     bool deleteElement(const int p); // 删除位置 p 上的元素，表的长度减 1
-    bool getPos(int& p, const T value); // 查找值为 value 的元素并返回其位置
+    bool getPos(int& p, const T value); // 查找值为 value 的元素并返回其位置 位置的值赋值给P
     bool getValue(const int p, T& value); // 把位置 p 元素值返回到变量 value
     bool setValue(const int p, const T value);
 };

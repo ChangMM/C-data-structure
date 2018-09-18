@@ -7,10 +7,8 @@
 //  单链表的模板函数
 //
 
-#pragma once
 #ifndef LinkList_h
 #define LinkList_h
-#include "stdio.h"
 #include <iostream>
 #include "ListADT.h"
 using namespace std;
@@ -19,22 +17,22 @@ template <class T> class Link {
 public:
     T data; // 用于保存结点元素的内容
     Link<T> * next; // 指向后继结点的指针
-    Link(const T info, const Link<T>* nextValue = NULL) {
+    Link(T info, Link<T>* nextValue = NULL) {
         data = info;
         next = nextValue;
     }
-    Link(const Link<T>* nextValue) {
+    Link(Link<T>* nextValue) {
         next = nextValue;
     }
 };
 
-template <class T> class lnkList : public List<T> {
+template <class T> class LinkList: public List<T> {
 private:
     Link<T> * head, *tail; // 单链表的头、尾指针
     Link<T> *setPos(const int p); // 第p个元素指针
 public:
-    lnkList(); // 构造函数
-    ~lnkList(); // 析构函数
+    LinkList(); // 构造函数
+    ~LinkList(); // 析构函数
     bool isEmpty(); // 判断链表是否为空
     void clear(); // 将链表存储的内容清除，成为空表
     int length(); // 返回此顺序表的当前实际长度
@@ -45,106 +43,101 @@ public:
     bool getPos(int &p, const T value); // 查找值为 value 的元素
 };
 
-template <class T> lnkList<T>::lnkList() {
-    head=NULL;
-    tail=NULL;
+template <class T> LinkList<T>::LinkList() {
+    head = new Link<T>(0, NULL);  // 带头结点的单链表头结点head是不为空的
+    tail = head; // 链表为空时头结点跟尾节点指向同一个节点
 }
 
-template <class T> lnkList<T>::~lnkList() {
-    if (head==NULL)
-        {
-        return;
-        }
-    Link<T>* cur=head;
+template <class T> LinkList<T>::~LinkList() {
+    Link<T>* temp;
+    Link<T>* cur = head->next;
+    head->next = NULL;
     while(cur != NULL) {
-        Link<T>* del=cur;
-        cur = cur->next;
-        delete del;
+        temp = cur->next;
+        delete cur;
+        cur = temp;
     }
-    delete cur;
-    head=NULL;
-    tail=NULL;
+    delete head;
 }
 
-template <class T> Link<T>* lnkList<T>::setPos(const int i) {
-    int count=0;
-    Link<T>* p=head;  //循链定位，若i为0则定位到第一个结点
+template <class T> Link<T>* LinkList<T>::setPos(const int i) {
+    int count = 0;
+
+    if(i<-1){
+        cout<<"list index out of range"<<endl;
+        return NULL;
+    } else if(i==-1) { // 将 i=-1 定位到头结点
+        return head;
+    }
+
+    Link<T>* p = head->next;
+
     while(p != NULL && count<i) {
-        p=p->next;
+        p = p->next;
         count++;
     }
-    return p;   //指向结点i
+    if (count==i) { // 判断要获取索引的节点是否超过链表的长度
+        return p;
+    } else {
+        cout<<"list index out of range"<<endl;
+        return NULL;
+    }
 }
 
-template <class T> bool lnkList<T>::insertElement(const int i, const T value) {
+template <class T> bool LinkList<T>::insertElement(const int i, const T value) {
     Link<T> *p, *q;
-    if ((p=setPos(i-1))==NULL)   //p是位置i结点的前驱
-        {
-        cout <<  "Insertion point is illegal" << endl;
+    if ((p=setPos(i-1))==NULL){ //p是位置i结点的前驱
+        cout<<"Insertion point is illegal"<<endl;
         return false;
-        }
+    }
     q = new Link<T>(value, p->next);
     p->next = q;
-    if (p==tail)  //插入点在链尾，插入结点成为新的链尾
-        {
+    if (p==tail){ //插入点在链尾，插入结点成为新的链尾
         tail = q;
-        }
+    }
     return true;
 }
 
-template <class T> bool lnkList<T>::deleteElement(const int i) {
+template <class T> bool LinkList<T>::deleteElement(const int i) {
     Link<T> *p, *q;
-    if (i==0){  //删除头结点
-        q=head;
-        head=head->next;
-        delete q;
-        return true;
-    }
-    p=setPos(i-1);
+    p=setPos(i-1); // p 为要删除元素的前驱节点
     if (p==NULL || p==tail) {  //删除的结点不存在
         cout << "deletion is illegal" << endl;
         return false;
     }
-    q=p->next;   //q是真正待删除结点
-    if (q==tail)  //待删结点为尾结点，则修改尾指针
-        {
+    q = p->next; // q 为准备删除的节点
+    if(q==tail){
         tail = p;
-        p->next=NULL;
-        }
-    else
-        p->next=q->next;   //删除结点q并修改链指针
+        p->next = NULL;
+    } else {
+        p->next = q->next;
+    }
     delete q;
     return true;
 }
 
-template <class T> bool lnkList<T>::isEmpty() {
-    if (head==NULL) {
-        return true;
-    }
-    else {
-        return false;
-    }
+template <class T> bool LinkList<T>::isEmpty() {
+    return head->next == NULL;
 }
 
-template <class T> void lnkList<T>::clear() {
-    if (head==NULL)
-        {
+template <class T> void LinkList<T>::clear() {
+    Link<T>* cur = head->next;
+    if(cur == NULL){
         return;
-        }
-    Link<T>* cur=head;
-    while(cur != NULL) {
-        Link<T>* del=cur;
-        cur = cur->next;
-        delete del;
     }
-    delete cur;
-    head=NULL;
-    tail=NULL;
+    head->next = NULL;
+    Link<T>* temp;
+    while(cur != NULL) {
+        temp = cur->next;
+        delete cur;
+        cur = temp;
+    }
+    tail = head;
 }
 
-template <class T> int lnkList<T>::length() {
-    int count=0;
-    Link<T>* cur=head;
+template <class T> int LinkList<T>::length() {
+    int count = 0;
+    Link<T>* cur = head->next;
     while(cur) {
         count++;
         cur = cur->next;
@@ -152,49 +145,44 @@ template <class T> int lnkList<T>::length() {
     return count;
 }
 
-template <class T> bool lnkList<T>::appendElement(const T value) {
+template <class T> bool LinkList<T>::appendElement(const T value) {
     Link<T>* newLink = new Link<T>(value);
-    if (head==NULL) {
-        head=newLink;
-        tail=head;
-    }
-    else {
-        tail->next = newLink;
-        tail=newLink;
-    }
+    tail->next = newLink;
+    tail=newLink;
     return true;
 }
 
-template <class T> bool lnkList<T>::getPos(int& i, const T value) {
-    Link<T>* cur=head;
-    int count=0;
-    while(cur) {
-        if (cur->data==value)
-            {
-            i=count;
-            return true;
-            }
+template <class T> bool LinkList<T>::getPos(int& i, const T value) {
+    int count = 0;
+    Link<T>* cur = head->next;
+    while(cur!=NULL&&cur->data!=value){
         cur = cur->next;
         count++;
     }
-    cout << "can not find element: " << value << endl;
-    return false;
+    if(cur==NULL){
+        cout<<"can not find element: "<<value<<endl;
+        return false;
+    } else {
+        cout<<"find element: "<<value<<" at index "<<count<< endl;
+        i = count;
+        return true;
+    }
 }
 
-template <class T> bool lnkList<T>::getValue(const int i, T& value) {
-    int count=0;
-    Link<T>* cur=head;  //循链定位，若i为0则定位到第一个结点
+template <class T> bool LinkList<T>::getValue(const int i, T& value) {
+    int count = 0;
+    Link<T>* cur = head->next;
     while(cur != NULL && count<i) {
         cur=cur->next;
         count++;
     }
     if (cur==NULL) {
+        cout<<i<<" is out of range"<<endl;
         return false;
-    }
-    else {
+    }else {
         value = cur->data;
+        cout << "find element: " <<value<< endl;
         return true;
     }
 }
-
 #endif /* LinkList_h */
