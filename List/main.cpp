@@ -14,6 +14,8 @@ using namespace std;
 
 LinkList<int> testLinkList;
 
+
+
 int main(int argc, const char * argv[]) {
     int temp;
     testLinkList.appendElement(5);
@@ -28,12 +30,5 @@ int main(int argc, const char * argv[]) {
     testLinkList.clear();
     testLinkList.getPos(temp, 7);
     testLinkList.getValue(2, temp);
-
-    int* p = new int;
-    *p = 5;
-    int* q = p;
-    delete p;
-    cout<<*q<<endl;
-
     return 0;
 }
