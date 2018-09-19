@@ -7,11 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B30057912152CA9900F49BA3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B30057902152CA9900F49BA3 /* main.cpp */; };
 		B32CAA4D215022D800803EA9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B32CAA4C215022D800803EA9 /* main.cpp */; };
 		B32CAA5A21502CCF00803EA9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B32CAA5921502CCF00803EA9 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		B300578C2152CA9800F49BA3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		B32CAA47215022D800803EA9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,6 +43,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B300578E2152CA9800F49BA3 /* Stack */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Stack; sourceTree = BUILT_PRODUCTS_DIR; };
+		B30057902152CA9900F49BA3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B30057952152CBF100F49BA3 /* StackADT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StackADT.h; sourceTree = "<group>"; };
+		B30057962152CC6000F49BA3 /* ArrStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArrStack.h; sourceTree = "<group>"; };
 		B32CAA49215022D800803EA9 /* C_Data_structure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = C_Data_structure; sourceTree = BUILT_PRODUCTS_DIR; };
 		B32CAA4C215022D800803EA9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B32CAA5721502CCF00803EA9 /* List */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = List; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +56,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B300578B2152CA9800F49BA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B32CAA46215022D800803EA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,11 +80,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B300578F2152CA9900F49BA3 /* Stack */ = {
+			isa = PBXGroup;
+			children = (
+				B30057902152CA9900F49BA3 /* main.cpp */,
+				B30057952152CBF100F49BA3 /* StackADT.h */,
+				B30057962152CC6000F49BA3 /* ArrStack.h */,
+			);
+			path = Stack;
+			sourceTree = "<group>";
+		};
 		B32CAA40215022D800803EA9 = {
 			isa = PBXGroup;
 			children = (
 				B32CAA4B215022D800803EA9 /* C_Data_structure */,
 				B32CAA5821502CCF00803EA9 /* List */,
+				B300578F2152CA9900F49BA3 /* Stack */,
 				B32CAA4A215022D800803EA9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +105,7 @@
 			children = (
 				B32CAA49215022D800803EA9 /* C_Data_structure */,
 				B32CAA5721502CCF00803EA9 /* List */,
+				B300578E2152CA9800F49BA3 /* Stack */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,6 +131,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B300578D2152CA9800F49BA3 /* Stack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B30057942152CA9900F49BA3 /* Build configuration list for PBXNativeTarget "Stack" */;
+			buildPhases = (
+				B300578A2152CA9800F49BA3 /* Sources */,
+				B300578B2152CA9800F49BA3 /* Frameworks */,
+				B300578C2152CA9800F49BA3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Stack;
+			productName = Stack;
+			productReference = B300578E2152CA9800F49BA3 /* Stack */;
+			productType = "com.apple.product-type.tool";
+		};
 		B32CAA48215022D800803EA9 /* C_Data_structure */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B32CAA50215022D800803EA9 /* Build configuration list for PBXNativeTarget "C_Data_structure" */;
@@ -141,6 +191,9 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = bingyan;
 				TargetAttributes = {
+					B300578D2152CA9800F49BA3 = {
+						CreatedOnToolsVersion = 10.0;
+					};
 					B32CAA48215022D800803EA9 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
@@ -163,11 +216,20 @@
 			targets = (
 				B32CAA48215022D800803EA9 /* C_Data_structure */,
 				B32CAA5621502CCF00803EA9 /* List */,
+				B300578D2152CA9800F49BA3 /* Stack */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B300578A2152CA9800F49BA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B30057912152CA9900F49BA3 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B32CAA45215022D800803EA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -187,6 +249,27 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		B30057922152CA9900F49BA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94ZP37H472;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B30057932152CA9900F49BA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94ZP37H472;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		B32CAA4E215022D800803EA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -335,6 +418,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B30057942152CA9900F49BA3 /* Build configuration list for PBXNativeTarget "Stack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B30057922152CA9900F49BA3 /* Debug */,
+				B30057932152CA9900F49BA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B32CAA44215022D800803EA9 /* Build configuration list for PBXProject "C_Data_structure" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

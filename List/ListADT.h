@@ -11,6 +11,7 @@
 #define ListADT_h
 
 template <class T> class List {
+public:
     void clear(); // 置空线性表
     bool isEmpty(); // 线性表为空时，返回 true
     bool appendElement(const T value); // 在表尾添加一个元素 value，表的长度增 1
