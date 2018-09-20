@@ -22,32 +22,41 @@ template <class T> class ArrStack:public MyStack <T> {
 private:
     int mSize;
     int index;
+    int capacity = 10;            // 栈当前的容量
     T *st;
 public:
-    ArrStack(int size = 10) {
-        mSize = size;
+    ArrStack() {
         index = -1;
-        st = new T[mSize];
+        st = new T[capacity];     // 初始化的时候 新建一个长度为 10 的数组
     }
     ~ArrStack() {
         delete [] st;
     }
-    void clear();
+
+    bool empty();
+    unsigned int size();
+    T& top();
     bool push(const T item);
     void pop();
-    T& top();
-    bool isEmpty();
-    bool isFull();
 };
 
 template <class T> bool ArrStack<T>::push(const T item){
-    if(isFull()){
-        cout<<"The stack is overflow."<<endl;
-        return false;
-    } else {
-        st[++index] = item;
-        return true;
+    if(index == capacity-1){
+        cout<<"The stack is expanding capacity."<<endl;
+        capacity = capacity*2;
+        T* buffer = new T[capacity];
+        memcpy(buffer, st, sizeof(T));
+        delete[] st;
+        st = buffer;
     }
+
+    if (st == nullptr){  //内存分配失败
+        cout << "malloc failed." << endl;
+        exit(0);
+    }
+
+    st[++index] = item;
+    return true;
 }
 
 template <class T> T& ArrStack<T>::top(){
@@ -62,16 +71,12 @@ template <class T> void ArrStack<T>::pop(){
     }
 }
 
-template <class T> bool ArrStack<T>::isFull(){
-    return index == (mSize - 1);
-}
-
-template <class T> bool ArrStack<T>::isEmpty(){
+template <class T> bool ArrStack<T>::empty(){
     return index == -1;
 }
 
-template <class T> void ArrStack<T>::clear(){
-    index = -1;
+template <class T> unsigned int ArrStack<T>::size(){
+    return mSize;
 }
 
 #endif /* ArrStack_h */

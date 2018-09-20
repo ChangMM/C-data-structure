@@ -12,12 +12,18 @@
 
 template <class T> class MyStack {
 public:
-    virtual void clear() = 0; // 变为空栈
+    // Capacity
+    virtual bool empty() = 0;            // 若栈已空返回真
+    virtual unsigned int size() = 0;     // 返回栈中元素的个数
+
+    // Access value
+    virtual T& top() = 0;                // 返回栈顶但不弹出，成功返回真，否则假
+
+    // Modifiers
+    virtual void pop() = 0;              // 返回栈顶内容并弹出，成功返回真，否则假
     virtual bool push(const T item) = 0; // item入栈，成功返回真，否则假
-    virtual void pop() = 0; // 返回栈顶内容并弹出，成功返回真，否则假
-    virtual T& top() = 0; // 返回栈顶但不弹出，成功返回真，否则假
-    virtual bool isEmpty() = 0; // 若栈已空返回真
-    virtual bool isFull() = 0; // 若栈已满返回真
+    void emplace() {};                   // 暂时不实现
+    void swap(){};                       // 暂时不实现
 };
 
 #endif /* StackADT_h */
