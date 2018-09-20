@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include "ArrStack.h"
+#include "LinkStack.h"
 
 int main(int argc, const char * argv[]) {
     

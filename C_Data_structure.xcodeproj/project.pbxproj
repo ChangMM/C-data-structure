@@ -53,6 +53,7 @@
 		B32CAA5921502CCF00803EA9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B32CAA5E21502CF500803EA9 /* ListADT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListADT.h; sourceTree = "<group>"; };
 		B32CAA5F21502E6500803EA9 /* LinkList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkList.h; sourceTree = "<group>"; };
+		B39E7EA721535C58002A3AC5 /* LinkStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkStack.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +87,7 @@
 				B30057902152CA9900F49BA3 /* main.cpp */,
 				B30057952152CBF100F49BA3 /* StackADT.h */,
 				B30057962152CC6000F49BA3 /* ArrStack.h */,
+				B39E7EA721535C58002A3AC5 /* LinkStack.h */,
 			);
 			path = Stack;
 			sourceTree = "<group>";

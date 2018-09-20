@@ -4,12 +4,8 @@
 //
 //  Created by cmm on 2018/9/20.
 //  Copyright © 2018年 bingyan. All rights reserved.
-//  栈的顺序存储
-//  栈中最多可存放的元素个数
-//  栈顶位置，应小于mSize
-//  存放栈元素的数组
-//  栈的运算的顺序实现
-//  创建一个给定长度的顺序栈实例
+//
+//  栈的顺序存储, 存放栈元素的数组, 栈的容量不受限制即数组的长度可以动态改变
 //
 
 #ifndef ArrStack_h
@@ -20,7 +16,6 @@ using namespace std;
 
 template <class T> class ArrStack:public MyStack <T> {
 private:
-    int mSize;
     int index;
     int capacity = 10;            // 栈当前的容量
     T *st;
@@ -41,7 +36,7 @@ public:
 };
 
 template <class T> bool ArrStack<T>::push(const T item){
-    if(index == capacity-1){
+    if(index == capacity - 1){
         cout<<"The stack is expanding capacity."<<endl;
         capacity = capacity*2;
         T* buffer = new T[capacity];
@@ -76,7 +71,7 @@ template <class T> bool ArrStack<T>::empty(){
 }
 
 template <class T> unsigned int ArrStack<T>::size(){
-    return mSize;
+    return (index + 1);
 }
 
 #endif /* ArrStack_h */
