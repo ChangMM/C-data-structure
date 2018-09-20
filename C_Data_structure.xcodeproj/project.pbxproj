@@ -10,6 +10,7 @@
 		B30057912152CA9900F49BA3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B30057902152CA9900F49BA3 /* main.cpp */; };
 		B32CAA4D215022D800803EA9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B32CAA4C215022D800803EA9 /* main.cpp */; };
 		B32CAA5A21502CCF00803EA9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B32CAA5921502CCF00803EA9 /* main.cpp */; };
+		B357D2192153C37500DB2EBB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B357D2182153C37500DB2EBB /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		B357D2142153C37500DB2EBB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +63,9 @@
 		B32CAA5921502CCF00803EA9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B32CAA5E21502CF500803EA9 /* ListADT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListADT.h; sourceTree = "<group>"; };
 		B32CAA5F21502E6500803EA9 /* LinkList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkList.h; sourceTree = "<group>"; };
+		B357D2162153C37500DB2EBB /* RPNCalculator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RPNCalculator; sourceTree = BUILT_PRODUCTS_DIR; };
+		B357D2182153C37500DB2EBB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B357D21D2153C49A00DB2EBB /* Calculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		B39E7EA721535C58002A3AC5 /* LinkStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkStack.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +85,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B32CAA5421502CCF00803EA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B357D2132153C37500DB2EBB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -98,6 +118,7 @@
 				B32CAA4B215022D800803EA9 /* C_Data_structure */,
 				B32CAA5821502CCF00803EA9 /* List */,
 				B300578F2152CA9900F49BA3 /* Stack */,
+				B357D2172153C37500DB2EBB /* RPNCalculator */,
 				B32CAA4A215022D800803EA9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,6 +129,7 @@
 				B32CAA49215022D800803EA9 /* C_Data_structure */,
 				B32CAA5721502CCF00803EA9 /* List */,
 				B300578E2152CA9800F49BA3 /* Stack */,
+				B357D2162153C37500DB2EBB /* RPNCalculator */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +150,15 @@
 				B32CAA5F21502E6500803EA9 /* LinkList.h */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		B357D2172153C37500DB2EBB /* RPNCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				B357D2182153C37500DB2EBB /* main.cpp */,
+				B357D21D2153C49A00DB2EBB /* Calculator.h */,
+			);
+			path = RPNCalculator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +215,23 @@
 			productReference = B32CAA5721502CCF00803EA9 /* List */;
 			productType = "com.apple.product-type.tool";
 		};
+		B357D2152153C37500DB2EBB /* RPNCalculator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B357D21C2153C37500DB2EBB /* Build configuration list for PBXNativeTarget "RPNCalculator" */;
+			buildPhases = (
+				B357D2122153C37500DB2EBB /* Sources */,
+				B357D2132153C37500DB2EBB /* Frameworks */,
+				B357D2142153C37500DB2EBB /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RPNCalculator;
+			productName = RPNCalculator;
+			productReference = B357D2162153C37500DB2EBB /* RPNCalculator */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -202,6 +250,9 @@
 					B32CAA5621502CCF00803EA9 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
+					B357D2152153C37500DB2EBB = {
+						CreatedOnToolsVersion = 10.0;
+					};
 				};
 			};
 			buildConfigurationList = B32CAA44215022D800803EA9 /* Build configuration list for PBXProject "C_Data_structure" */;
@@ -219,6 +270,7 @@
 				B32CAA48215022D800803EA9 /* C_Data_structure */,
 				B32CAA5621502CCF00803EA9 /* List */,
 				B300578D2152CA9800F49BA3 /* Stack */,
+				B357D2152153C37500DB2EBB /* RPNCalculator */,
 			);
 		};
 /* End PBXProject section */
@@ -245,6 +297,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B32CAA5A21502CCF00803EA9 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B357D2122153C37500DB2EBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B357D2192153C37500DB2EBB /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +477,27 @@
 			};
 			name = Release;
 		};
+		B357D21A2153C37500DB2EBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94ZP37H472;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B357D21B2153C37500DB2EBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 94ZP37H472;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -452,6 +533,15 @@
 			buildConfigurations = (
 				B32CAA5C21502CCF00803EA9 /* Debug */,
 				B32CAA5D21502CCF00803EA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B357D21C2153C37500DB2EBB /* Build configuration list for PBXNativeTarget "RPNCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B357D21A2153C37500DB2EBB /* Debug */,
+				B357D21B2153C37500DB2EBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
