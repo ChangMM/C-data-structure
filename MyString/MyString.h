@@ -33,7 +33,7 @@ public:
     const char* c_str() const;
 
     // 一些运算符重载
-    char operator[](unsigned int i);
+    char& operator[](unsigned int i);  // 返回值类型应该是 char& 而不是 char
     MyString& operator=(const MyString& _str);
     MyString& operator=(const char* _pstr);
     MyString operator+(const MyString& _str);
@@ -60,7 +60,7 @@ void MyString::_copy(const char* _pstr){
         unsigned int len = unsigned(strlen(_pstr));
         _p = new char[len + 1];
         _length = len;
-        strcpy(_p, _pstr);
+        strcpy(_p, _pstr);  // 也可用 memcpy(_p, _pstr, len*sizeof(char)); 来代替
     } else {
         _p = NULL;
         _length = 0;
@@ -111,7 +111,7 @@ unsigned int MyString::length() const{
     return _length;
 }
 
-char MyString::operator[](unsigned int i){
+char& MyString::operator[](unsigned int i){
     if(i>=_length){
         cerr<<"out of range"<<endl;
         exit(0);
@@ -166,10 +166,19 @@ MyString operator+(const char* _pstr, const MyString& _str){
     return temp;
 }
 
+// 重载流操作运算符
 ostream& operator<<(ostream& o, const MyString& _str){
     if(_str.c_str() != NULL){
-        cout<<_str.c_str();
+        o<<_str.c_str();
     }
     return o;
 }
+
+istream& operator>>(istream& is, MyString& _str){
+    char *_pstr = new char[50];
+    is>>_pstr;
+    _str = _pstr;
+    return is;
+}
+
 #endif /* MyString_h */
