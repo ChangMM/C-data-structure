@@ -38,6 +38,7 @@ public:
     MyString& operator=(const char* _pstr);
     MyString operator+(const MyString& _str);
     MyString operator+(const char* _pstr);
+    friend MyString operator+(const char* _pstr, const MyString& _str);  // 需要重载为友元函数
 
     //一些字符串的操作
     MyString substr(const MyString& _str);
@@ -68,10 +69,10 @@ void MyString::_copy(const char* _pstr){
 
 void MyString::_copy(const MyString& _str){
     if(_str.c_str() != NULL){ // 这一步需要判断
-        unsigned int len = unsigned(strlen(_str._p));
+        unsigned int len = _str.length();
         _p = new char[len + 1];
         _length = len;
-        strcpy(_p, _str._p);
+        strcpy(_p, _str.c_str());
     } else {
         _p = NULL;
         _length = 0;
@@ -127,7 +128,7 @@ MyString& MyString::operator=(const char *_pstr){
 }
 
 MyString& MyString::operator=(const MyString &_str){
-    if(_p != _str._p){ // 这一个尤其重要
+    if(_p != _str.c_str()){ // 这一个尤其重要
         if(_p != NULL){
             delete [] _p;
         }
@@ -137,17 +138,8 @@ MyString& MyString::operator=(const MyString &_str){
 }
 
 MyString MyString::operator+(const MyString& _str){
-    MyString temp;
-    if(_str._p==NULL && _p!=NULL){
-        temp = *this;
-    } else if(_str._p!=NULL && _p==NULL){
-        temp = _str;
-    } else if(_str._p!=NULL && _p!=NULL){
-        char * c_temp = new char[_length + _str.length() + 1];
-        strcat(c_temp, _p);
-        strcat(c_temp, _str.c_str());
-        temp = c_temp;
-    }
+    const char* _pstr = _str.c_str();
+    MyString temp = *this + _pstr;
     return temp;
 }
 
@@ -163,6 +155,14 @@ MyString MyString::operator+(const char* _pstr){
         strcat(c_temp, _pstr);
         temp = c_temp;
     }
+    return temp;
+}
+
+// 友元函数的声明
+MyString operator+(const char* _pstr, const MyString& _str){
+    MyString temp;
+    temp = temp + _pstr;
+    temp = temp + _str.c_str();
     return temp;
 }
 
