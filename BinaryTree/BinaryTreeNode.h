@@ -16,15 +16,15 @@ private:
     BinaryTreeNode<T>* left;  // 左子树节点
     BinaryTreeNode<T>* right; // 右子树节点
 public:
-    BinaryTreeNode(const T& _data, const BinaryTreeNode* _l = NULL, const BinaryTreeNode* _r = NULL):value(_data), left(_l), right(_r){};
+    BinaryTreeNode(const T& _data, BinaryTreeNode* _l = NULL, BinaryTreeNode* _r = NULL):value(_data), left(_l), right(_r){};
 
-    T getValue() const;
+    T getValue();
     void setValue(const T& val); // 设置数据域
 
-    BinaryTreeNode<T>* getLeft() const; // 返回左子节点
-    BinaryTreeNode<T>* getRight() const; // 返回右子节点
-    void setLeft(const BinaryTreeNode<T>* node); // 设置左子节点
-    void setRight(const BinaryTreeNode<T>* node); // 设置右子节点
+    BinaryTreeNode<T>* getLeft(); // 返回左子节点
+    BinaryTreeNode<T>* getRight(); // 返回右子节点
+    void setLeft(BinaryTreeNode<T>* node); // 设置左子节点
+    void setRight(BinaryTreeNode<T>* node); // 设置右子节点
 
     BinaryTreeNode<T>* getParent(BinaryTreeNode<T>* root); // 返回父节点
 
@@ -32,7 +32,7 @@ public:
     BinaryTreeNode<T>& operator= (const BinaryTreeNode<T>& node); // 重载赋值操作符
 };
 
-template<class T> T BinaryTreeNode<T>::getValue() const{
+template<class T> T BinaryTreeNode<T>::getValue(){
     return value;
 }
 
@@ -40,19 +40,19 @@ template<class T> void BinaryTreeNode<T>::setValue(const T& val){
     value = val;
 }
 
-template<class T> BinaryTreeNode<T>* BinaryTreeNode<T>::getLeft() const{
+template<class T> BinaryTreeNode<T>* BinaryTreeNode<T>::getLeft(){
     return left;
 }
 
-template<class T> BinaryTreeNode<T>* BinaryTreeNode<T>::getRight() const{
+template<class T> BinaryTreeNode<T>* BinaryTreeNode<T>::getRight(){
     return right;
 }
 
-template<class T> void BinaryTreeNode<T>::setRight(const BinaryTreeNode<T>* node){
+template<class T> void BinaryTreeNode<T>::setRight(BinaryTreeNode<T>* node){
     right = node;
 }
 
-template<class T> void BinaryTreeNode<T>::setLeft(const BinaryTreeNode<T>* node){
+template<class T> void BinaryTreeNode<T>::setLeft(BinaryTreeNode<T>* node){
     left = node;
 }
 

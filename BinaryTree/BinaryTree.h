@@ -19,13 +19,15 @@ private:
     BinaryTreeNode<T>* root;
 public:
     BinaryTree(BinaryTreeNode<T>* _root = NULL):root(_root){}; //构造函数
-    ~BinaryTree() {};
+    ~BinaryTree() {
+        if(root!=NULL){
+            _clear(root);
+        }
+    };
     bool isEmpty() const; // 判定二叉树是否为空树
 
     BinaryTreeNode<T>* getRoot(); // 返回根结点
-    BinaryTreeNode<T>* getParent(BinaryTreeNode<T> *current);       // 父节点
-    BinaryTreeNode<T>* getLeftSibling(BinaryTreeNode<T> *current);  // 左兄弟
-    BinaryTreeNode<T>* getRightSibling(BinaryTreeNode<T> *current); // 右兄弟
+    BinaryTreeNode<T>* getParent(BinaryTreeNode<T> *current);
 
     // 几种遍历算法
     void preOrder();   // 前序遍历二叉树或其子树  非递归形式
@@ -35,7 +37,7 @@ public:
     void depthOrder(BinaryTreeNode<T> *root); // 深度遍历二叉树或其子树 递归形式
 
     // 树的节点操作
-    void createTree(const T& info, BinaryTree<T>& leftTree, BinaryTree<T>& rightTree); // 构造新树
+    void createTree(const T* arr, int& index, int& size, const T& invalid); // 构造新树
     void deleteNode(BinaryTreeNode<T> *node); // 删除节点
     void insertNode(BinaryTreeNode<T> *node); // 插入节点
     void clear(); // 删除二叉树或子树
@@ -76,7 +78,7 @@ template <class T> void BinaryTree<T>::depthOrder(BinaryTreeNode<T> *node){
         //cout<<root->getValue()<<" "; //前序遍历
         depthOrder(root->getLeft());
         cout<<root->getValue()<<" "; //中序遍历
-        depthOrder(root->getright());
+        depthOrder(root->getRight());
         //cout<<root->getValue()<<" "; //后序遍历
     }
 }
@@ -114,7 +116,7 @@ template <class T> void BinaryTree<T>::inOrder(){
             pointer = aStack.top();
             aStack.pop();
             cout<<pointer->getValue()<<" ";
-            pointer = pointer->right;
+            pointer = pointer->getRight();
         }
     }
 }
@@ -162,5 +164,33 @@ template <class T> void BinaryTree<T>::levelOrder(){
     }
 }
 
+template <class T> BinaryTreeNode<T>* _create(const T* arr, int& index, const int& size, const T& invalid){
+    BinaryTreeNode<T>* root = NULL;
+    if(index < size && arr[index] != invalid){
+        root = new BinaryTreeNode<T>(arr[index]);
+        root->setLeft(_create(arr, ++index, size, invalid));
+        root->setRight(_create(arr, ++index, size, invalid));
+    }
+    return root;
+}
 
+template <class T> void BinaryTree<T>::createTree(const T* arr, int& index, int& size, const T& invalid){
+    root = _create(arr, index, size, invalid);
+}
+
+template <class T> void _clear(BinaryTreeNode<T>* _root){
+    if(_root!=NULL){
+        _clear(_root->getLeft());
+        _clear(_root->getRight());
+        delete _root;
+        _root->setRight(NULL);
+        _root->setLeft(NULL);
+        _root=NULL;
+    }
+}
+
+template <class T> void BinaryTree<T>::clear(){
+    _clear(root);
+    root = NULL;
+}
 #endif /* BinaryTree_h */
