@@ -272,18 +272,18 @@ template <class T> void BST<T>::cancel(bstNode<T>* node){
 
 template <class T> void _clear(bstNode<T>* _root){
     if(_root!=NULL){
-        _clear(_root->getLeft());
-        _clear(_root->getRight());
+        _clear(_root->left);
+        _clear(_root->right);
         delete _root;
-        _root->setRight(NULL);
-        _root->setLeft(NULL);
+        _root->right = NULL;
+        _root->left = NULL;
         _root=NULL;
     }
 }
 
 template <class T> void BST<T>::clear(){
-    _clear(root);
-    root = NULL;
+    _clear(_root);
+    _root = NULL;
 }
 
 #endif /* bst_h */
